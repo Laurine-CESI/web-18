@@ -1,11 +1,17 @@
-<h1> Contenu </h1> 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, fugiat eos. Temporibus eum laborum commodi saepe, veniam deleniti error quaerat quos numquam iste animi. Error nobis asperiores enim aut dignissimos.
-Et itaque provident deleniti perferendis mollitia eaque nesciunt cupiditate voluptas saepe! Commodi quo assumenda facere eos pariatur expedita nostrum voluptas aperiam. Cum blanditiis, modi impedit quam nobis architecto ipsum enim.
-Ducimus illum repellat culpa quae dolore praesentium? Et ducimus optio illo, laborum possimus tempore ipsa maiores officia hic commodi, saepe amet. Esse officiis maiores obcaecati mollitia eligendi, in fugiat sapiente.
-Hic tenetur cumque nam in odit fugit maxime dolore officia ipsam sunt nobis dolorem eos beatae debitis aperiam saepe a, nesciunt nemo dolorum amet commodi natus. Corporis ut velit voluptatem?
-Vitae enim sapiente quam sed a deleniti repudiandae sit maiores nostrum quas excepturi numquam quae quia sint, impedit consequuntur explicabo facilis beatae dicta! Ea asperiores ipsum voluptas suscipit. Commodi, aliquam.
-Necessitatibus tenetur nemo earum molestiae dolorum placeat eius, dolores ad esse officiis laudantium minus aliquam modi expedita sint laborum numquam sapiente ea, delectus error doloremque velit doloribus harum minima. Commodi!
-Alias magni quasi voluptas iure nihil perferendis necessitatibus aperiam sint numquam similique totam sunt doloremque perspiciatis dicta iste quidem, rerum dolores repellat tempore atque assumenda ducimus. Voluptas voluptates facere enim?
-Repellendus laborum praesentium fugit rerum nostrum vel impedit corporis ad quia? Assumenda, vero quidem nam, dolorem voluptatem eius dolorum architecto itaque, fugiat voluptatum ea facere ullam reprehenderit aut asperiores voluptas.
-Facilis hic vitae inventore voluptatum? Excepturi, commodi iusto voluptatibus quasi veniam omnis eius temporibus amet similique ducimus vitae unde corporis id reiciendis eligendi nemo eaque tempore aperiam porro blanditiis eos.
-Distinctio, laborum ipsum? Vero nostrum eveniet aliquam dolorum harum expedita totam perferendis aspernatur. Dolor sed aperiam praesentium quas odit sequi iusto enim, dolorum porro, quibusdam consequuntur cupiditate velit. Reiciendis, dicta.</p>
+<?php 
+
+//Récupération des fichiers avec double extension du repertoire include
+$content =glob('./includes/*.inc.php');
+
+//Récupération du paramètre d'URL 'page'
+$page = isset($_GET['page']) ? $_GET['page'] : ""; //ce chemin est comme la variable "if" et "else"
+
+//Concaténation de la valeur récupérée pour avoir le bon chemin
+$page = './includes/' . $page . '.inc.php' ;
+
+
+// On vérifie si la chaine précédente est présente dans le tableau renvoyé par glob()
+$page = in_array($page, $content) ?  $page :  './includes/home.inc.php';
+
+// Inclusion de la page
+require $page;
