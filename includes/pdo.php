@@ -1,6 +1,7 @@
 <?php
 
 try{
+    //PDO est une classe de PHP. le $ avant le pdo signifie que c'est une variable.
     $pdo = new PDO('mysql:host=localhost;dbname=cartes','root','',
     array(
         // Définition du jeu d'encodage de caractères
