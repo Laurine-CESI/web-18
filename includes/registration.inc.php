@@ -57,9 +57,13 @@ if (isset($_POST['validation'])) {
             $token = hash('sha512', $maurice);
 
             $sql = "INSERT INTO t_users
-            (USENOM, USEPRENOM, USEMAIL, USEPWD)
-            VALUES ('" .$nom ."','" . $prenom . "','" . $email . "','" . $mdp . "', 3'";
-            die($sql);
+            (USENOM, USEPRENOM, USEMAIL, USEPWD, USETOKEN, ID_ROLES)
+            VALUES ('" .$nom ."','" .$prenom . "','" .$email . "','" . $mdp . "','" . $token. "',3)" ;
+            
+            $query =$pdo->prepare($sql);
+            $query->execute();
+
+            echo" Tu es inscris";
         }
 
         else {
