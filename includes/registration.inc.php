@@ -36,9 +36,13 @@ if (isset($_POST['validation'])) {
     // Insertion en BDD
 
     else{
+        // Préparation de la requête SQL pour compter le nombre d'occurence(fois) avec l'adresse mail
         $checkMail="SELECT COUNT(*) FROM t_users WHERE usemail='" . $email ."'";
         // DIE :  Fonction qui permet d'afficher le contenu, et permet de faire un point d'arrêt dans le code
-        die($checkMail);
+        // die($checkMail);
+
+        // Execution de la requête
+        $nombreOccurences = $pdo->query($checkMail)->fetchColumm();
     }
 
 }
