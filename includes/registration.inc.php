@@ -42,7 +42,29 @@ if (isset($_POST['validation'])) {
         // die($checkMail);
 
         // Execution de la requête
-        $nombreOccurences = $pdo->query($checkMail)->fetchColumm();
+        $nombreOccurences = $pdo->query($checkMail)->fetchColumn();
+
+        if ($nombreOccurences == 0){
+
+            // Hashage du mot de passe avec la fonction password_hash
+            $mdp = password_hash($mdp, PASSWORD_DEFAULT);
+
+            // str_shuffle mélange les caractères d'une chaîne
+            // date ('YmdHis') renvois 20190603170132
+            // rand() génère un nombre aléatoire
+            $maurice = str_shuffle(date('YmdHis') . $email . rand ());
+            // Utilisation de la fonction hash avec l'algorithme  de hashage sha512
+            $token = hash('sha512', $maurice);
+
+            $sql = "INSERT INTO t_users
+            (USENOM, USEPRENOM, USEMAIL, USEPWD)
+            VALUES ('" .$nom ."','" . $prenom . "','" . $email . "','" . $mdp . "', 3'";
+            die($sql);
+        }
+
+        else {
+            echo "Michel tu es déjà dans la base";
+        }
     }
 
 }
