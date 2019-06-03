@@ -33,8 +33,12 @@ if (isset($_POST['validation'])) {
 
     }
 
-    else {
-        echo "Insertion en BDD";
+    // Insertion en BDD
+
+    else{
+        $checkMail="SELECT COUNT(*) FROM t_users WHERE usemail='" . $email ."'";
+        // DIE :  Fonction qui permet d'afficher le contenu, et permet de faire un point d'arrêt dans le code
+        die($checkMail);
     }
 
 }
