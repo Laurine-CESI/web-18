@@ -63,6 +63,30 @@ if (isset($_POST['validation'])) {
             $query =$pdo->prepare($sql);
             $query->execute();
 
+
+            /* ENVOIS DE MAIL 
+            * Installer nodeJS
+            * Installer maildev (NodeJS impératif)
+            * nom install -g maildev@1.0.0-rc2
+            * Modifier le port dans php.ini (trouver dans WampServer) = smtp_port 25 à 1025
+            * Lancer maildev avec la commande : maildev
+            * Dans navigateur : http://127.0.0.1:1080
+            */
+
+            $msg = "Inscription OK";
+            $sujet = "Validation de votre inscription";
+            $headers = "From : manu@elysee.fr" . "\r\n" .    // ** \r\n = retour à la ligne sous windows
+                'Reply-To: brigitte@elysee.fr';
+
+            if(mail($email,$sujet,$msg,$headers)){
+                echo "Inscription OK";
+            }
+
+            else{
+                echo "Morche pô";
+            }
+
+
             echo" Tu es inscris";
         }
 
