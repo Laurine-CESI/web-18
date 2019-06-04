@@ -73,7 +73,8 @@ if (isset($_POST['validation'])) {
             * Dans navigateur : http://127.0.0.1:1080
             */
 
-            $msg = "Inscription OK";
+            $msg = "<h1>Inscription</h1>";
+            $msg = "<p>Pour valider votre inscription, cliquer <a href=\"http://localhost/web-18/index.php?page=registrationValidation\"> ici </a>.</p>";
             $sujet = "Validation de votre inscription";
             $headers = "From : manu@elysee.fr" . "\r\n" .    // ** \r\n = retour à la ligne sous windows
                 'Reply-To: brigitte@elysee.fr';
