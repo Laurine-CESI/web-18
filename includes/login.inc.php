@@ -32,8 +32,6 @@ if(isset($_POST['login'])) {
                 $_SESSION['login'] = 1;
                 $_SESSION['prenom'] = $result->useprenom;
                 $_SESSION['nom'] = $result->usenom;
-                var_dump($_SESSION);
-                die();
                 // Redirection en JavaScript avec <script>
                 // Une fois le login et le mdp mit (dans connexion), on est dirigé vers l'accueil
                 echo "<script>document.location.href='http://localhost/web-18/index.php'</script>";
